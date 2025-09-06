@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chandan Singh - Software Developer Journey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #EEF4ED 0%, #e2e8f0 100%);
+            color: #001219;
+            scroll-behavior: smooth;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        
+        .timeline-dot {
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-dot:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 0 6px rgba(10, 147, 150, 0.2);
+        }
+        
+        .skill-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #E5E7EB;
+            overflow: hidden;
+        }
+        
+        .progress-value {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #005F73, #0A9396);
+            transition: width 1.5s ease-in-out;
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #005F73 0%, #0A9396 100%);
+        }
+        
+        .timeline-container {
+            position: relative;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            width: 4px;
+            background: linear-gradient(to bottom, #005F73, #0A9396);
+            top: 0;
+            bottom: 0;
+            transform: translateX(-50%);
+        }
+        
+        .tech-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .tech-icon:hover {
+            transform: scale(1.2) rotate(5deg);
+        }
+        
+        .contact-card {
+            transition: all 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid #0A9396;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #0A9396; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12" data-aos="fade-down" data-aos-duration="1000">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-[#005F73] mb-2 typewriter">Chandan Singh</h1>
+            <p class="text-lg md:text-xl text-[#0A9396] mb-4">A Visual Journey of Skill and Impact</p>
+            <div class="mt-6">
+                <div class="inline-block gradient-bg text-white px-6 py-3 rounded-full shadow-lg font-semibold pulse">
+                    Keenable Computers Pvt. Ltd.
+                </div>
+            </div>
+        </header>
+
+        <section id="personal-info" class="mb-12 bg-white rounded-2xl shadow-xl p-6" data-aos="fade-up" data-aos-duration="800">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="contact-card bg-[#EEF4ED] p-4 rounded-xl text-center">
+                    <div class="text-2xl mb-2">📱</div>
+                    <h3 class="font-semibold text-[#005F73]">Phone</h3>
+                    <p class="text-gray-600">9625996512</p>
+                </div>
+                <div class="contact-card bg-[#EEF4ED] p-4 rounded-xl text-center">
+                    <div class="text-2xl mb-2">📧</div>
+                    <h3 class="font-semibold text-[#005F73]">Email</h3>
+                    <p class="text-gray-600">chandansingh9625996512@gmail.com</p>
+                </div>
+                <div class="contact-card bg-[#EEF4ED] p-4 rounded-xl text-center">
+                    <div class="text-2xl mb-2">💻</div>
+                    <h3 class="font-semibold text-[#005F73]">GitHub</h3>
+                    <p class="text-gray-600">chandan-fosteringlinux</p>
+                    <p class="text-gray-600">chandan-singh101</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills-overview" class="mb-16" data-aos="fade-up" data-aos-duration="1000">
+            <div class="bg-white rounded-2xl shadow-xl p-6 skill-card">
+                <h2 class="text-2xl font-bold text-center text-[#005F73] mb-4">Core Competency Matrix</h2>
+                <p class="text-center text-gray-600 max-w-2xl mx-auto mb-6">This chart illustrates my proficiency across key areas of software engineering. The well-rounded shape signifies a strong, adaptable skillset, capable of tackling challenges from the frontend to backend infrastructure and DevOps.</p>
+                <div class="chart-container h-80 md:h-96">
+                    <canvas id="skillsRadarChart"></canvas>
+                </div>
+            </div>
+        </section>
+        
+        <!-- <section id="career-timeline" class="mb-16" data-aos="fade-up" data-aos-duration="1000">
+            <h2 class="text-3xl font-bold text-center text-[#005F73] mb-8">Career Progression</h2>
+            
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+                
+                <div class="mb-16 flex flex-col md:flex-row items-center w-full" data-aos="fade-right" data-aos-duration="800">
+                    <div class="md:w-5/12 mb-4 md:mb-0 md:pr-8 order-1 flex justify-end">
+                        <div class="bg-white rounded-2xl shadow-xl p-6 w-full">
+                            <h3 class="font-bold text-[#005F73] text-xl">Full-Stack Developer</h3>
+                            <p class="text-sm font-semibold text-[#0A9396] mt-1">June 2020 - December 2021</p>
+                            <p class="text-sm leading-snug tracking-wide text-gray-900 text-opacity-100 mt-2">Keenable Computers Pvt. Ltd.</p>
+                            <p class="text-xs mt-3 text-gray-600">Built foundational experience in full-stack applications, DevOps, and API development, including a complete employee management system and early microservice testing.</p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="bg-[#EEF4ED] text-[#005F73] px-2 py-1 rounded-full text-xs">Node.js</span>
+                                <span class="bg-[#EEF4ED] text-[#005F73] px-2 py-1 rounded-full text-xs">Express</span>
+                                <span class="bg-[#EEF4ED] text-[#005F73] px-2 py-1 rounded-full text-xs">MongoDB</span>
+                                <span class="bg-[#EEF4ED] text-[#005F73] px-2 py-1 rounded-full text-xs">DevOps</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="z-20 flex items-center order-1 mx-4">
+                        <div class="timeline-dot bg-[#0A9396] shadow-xl w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center">
+                            <h1 class="mx-auto font-semibold text-lg text-white">1</h1>
+                        </div>
+                    </div>
+                    <div class="md:w-5/12 order-1 md:order-3"></div>
+                </div>
+
+                <div class="mb-16 flex flex-col md:flex-row items-center w-full" data-aos="fade-left" data-aos-duration="800">
+                    <div class="md:w-5/12 order-3"></div>
+                    <div class="z-20 flex items-center order-1 mx-4">
+                        <div class="timeline-dot bg-[#0A9396] shadow-xl w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center">
+                            <h1 class="mx-auto text-white font-semibold text-lg">2</h1>
+                        </div>
+                    </div>
+                    <div class="md:w-5/12 mb-4 md:mb-0 md:pl-8 order-1 md:order-2">
+                        <div class="bg-white rounded-2xl shadow-xl p-6 w-full">
+                            <h3 class="font-bold text-[#005F73] text-xl">Software Developer</h3>
+                            <p class="text-sm font-semibold text-[#0A9396] mt-1">January 2022 - Present</p>
+                            <p class="text-sm leading-snug tracking-wide text-gray-900 text-opacity-100 mt-2">Keenable Computers Pvt. Ltd.</p>
+                            <p class="text-xs mt-3 text-gray-600">Advanced into specialized roles, leading projects for major clients like Indigo and NIC. Focused on microservices architecture, security, and automation, delivering high-impact solutions.</p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="bg-[#EEF4ED] text-[#005F73] px-2 py-1 rounded-full text-xs">Microservices</span>
+                                <span class="bg-[#EEF4ED] text-[#005F73] px-2 py-1 rounded-full text-xs">Security</span>
+                                <span class="bg-[#EEF4ED] text-[#005F73] px-2 py-1 rounded-full text-xs">Automation</span>
+                                <span class="bg-[#EEF4ED] text-[#005F73] px-2 py-1 rounded-full text-xs">Quarkus</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+        <section id="career-timeline" class="mb-16" data-aos="fade-up" data-aos-duration="1000">
+    <h2 class="text-3xl font-bold text-center text-[#005F73] mb-8">Career Progression</h2>
+    
+    <div class="timeline-container">
+        <div class="timeline-line"></div>
+        
+        <div class="mb-16 flex flex-col md:flex-row items-center w-full" data-aos="fade-right" data-aos-duration="800">
+            <div class="md:w-5/12 mb-4 md:mb-0 md:pr-8 order-1 flex justify-end">
+                <div class="bg-white rounded-2xl shadow-xl p-6 w-full">
+                    <h3 class="font-bold text-[#005F73] text-xl">Full-Stack Developer</h3>
+                    <p class="text-sm font-semibold text-[#0A9396] mt-1">May 4, 2023 - Present</p>
+                    <p class="text-sm leading-snug tracking-wide text-gray-900 text-opacity-100 mt-2">Keenable Computers Pvt. Ltd.</p>
+                    <p class="text-xs mt-3 text-gray-600">Built foundational experience in full-stack applications, DevOps, and API development, including a complete employee management system and early microservice testing.</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="bg-[#EEF4ED] text-[#005F73] px-2 py-1 rounded-full text-xs">Node.js</span>
+                        <span class="bg-[#EEF4ED] text-[#005F73] px-2 py-1 rounded-full text-xs">Express</span>
+                        <span class="bg-[#EEF4ED] text-[#005F73] px-2 py-1 rounded-full text-xs">MongoDB</span>
+                        <span class="bg-[#EEF4ED] text-[#005F73] px-2 py-1 rounded-full text-xs">DevOps</span>
+                    </div>
+                </div>
+            </div>
+            <div class="z-20 flex items-center order-1 mx-4">
+                <div class="timeline-dot bg-[#0A9396] shadow-xl w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center">
+                    <h1 class="mx-auto font-semibold text-lg text-white">1</h1>
+                </div>
+            </div>
+            <div class="md:w-5/12 order-1 md:order-3"></div>
+        </div>
+
+        <div class="mb-16 flex flex-col md:flex-row items-center w-full" data-aos="fade-left" data-aos-duration="800">
+            <div class="md:w-5/12 order-3"></div>
+            <div class="z-20 flex items-center order-1 mx-4">
+                <div class="timeline-dot bg-[#0A9396] shadow-xl w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center">
+                    <h1 class="mx-auto text-white font-semibold text-lg">2</h1>
+                </div>
+            </div>
+            <div class="md:w-5/12 mb-4 md:mb-0 md:pl-8 order-1 md:order-2">
+                <div class="bg-white rounded-2xl shadow-xl p-6 w-full">
+                    <h3 class="font-bold text-[#005F73] text-xl">Software Developer</h3>
+                    <p class="text-sm font-semibold text-[#0A9396] mt-1">May 4, 2023 - Present</p>
+                    <p class="text-sm leading-snug tracking-wide text-gray-900 text-opacity-100 mt-2">Keenable Computers Pvt. Ltd.</p>
+                    <p class="text-xs mt-3 text-gray-600">Advanced into specialized roles, leading projects for major clients like Indigo and NIC. Focused on microservices architecture, security, and automation, delivering high-impact solutions.</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="bg-[#EEF4ED] text-[#005F73] px-2 py-1 rounded-full text-xs">Microservices</span>
+                        <span class="bg-[#EEF4ED] text-[#005F73] px-2 py-1 rounded-full text-xs">Security</span>
+                        <span class="bg-[#EEF4ED] text-[#005F73] px-2 py-1 rounded-full text-xs">Automation</span>
+                        <span class="bg-[#EEF4ED] text-[#005F73] px-2 py-1 rounded-full text-xs">Quarkus</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+        
+        <section id="project-deep-dive" class="mb-16" data-aos="fade-up" data-aos-duration="1000">
+            <h2 class="text-3xl font-bold text-center text-[#005F73] mb-8">Project Impact &amp; Achievements</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center skill-card" data-aos="flip-left" data-aos-duration="800">
+                    <div class="w-20 h-20 gradient-bg rounded-full flex items-center justify-center mb-4 floating">
+                        <span class="text-3xl text-white font-bold">17</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#005F73] mb-2">Microservice Testing</h3>
+                    <p class="text-gray-600 mt-2">Comprehensive unit tests authored for the FINO project, ensuring business logic stability and service reliability.</p>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center skill-card" data-aos="flip-left" data-aos-duration="800" data-aos-delay="100">
+                    <div class="w-20 h-20 gradient-bg rounded-full flex items-center justify-center mb-4 floating">
+                        <span class="text-3xl text-white">🚀</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#005F73] mb-2">Full-Stack Delivery</h3>
+                    <p class="text-gray-600 mt-2">Designed and built a complete employee management system using Express.js, Node.js, and multiple databases.</p>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center skill-card" data-aos="flip-left" data-aos-duration="800" data-aos-delay="200">
+                    <div class="w-20 h-20 gradient-bg rounded-full flex items-center justify-center mb-4 floating">
+                        <span class="text-3xl text-white">🔐</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#005F73] mb-2">Security Enhancement</h3>
+                    <p class="text-gray-600 mt-2">Implemented end-to-end encryption for a Keycloak login page, significantly enhancing user data security for an Indigo client project.</p>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg p-6 md:col-span-2 lg:col-span-3" data-aos="zoom-in" data-aos-duration="800">
+                    <h3 class="text-2xl font-bold text-center text-[#005F73] mb-4">API Mocking Automation</h3>
+                    <p class="text-center text-gray-600 max-w-3xl mx-auto mb-6">To accelerate development and testing, a large number of mock services were created. A custom program was even developed to automate WireMock service generation from a CSV file, showcasing a commitment to efficiency and smart automation.</p>
+                    <div class="chart-container h-80">
+                        <canvas id="mockServicesChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="tech-proficiency" data-aos="fade-up" data-aos-duration="1000">
+            <h2 class="text-3xl font-bold text-center text-[#005F73] mb-8">Technology Stack Proficiency</h2>
+            
+            <div class="bg-white rounded-2xl shadow-xl p-6 mb-12">
+                <h3 class="text-2xl font-bold text-center text-[#005F73] mb-6">Key Technologies & Skills</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+                    <div class="flex flex-col items-center p-4 bg-[#EEF4ED] rounded-2xl tech-icon">
+                        <span class="text-4xl mb-2">☕</span>
+                        <span class="font-semibold text-[#005F73]">Java</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-[#EEF4ED] rounded-2xl tech-icon">
+                        <span class="text-4xl mb-2">🔄</span>
+                        <span class="font-semibold text-[#005F73]">Node.js</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-[#EEF4ED] rounded-2xl tech-icon">
+                        <span class="text-4xl mb-2">🐋</span>
+                        <span class="font-semibold text-[#005F73]">Docker</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-[#EEF4ED] rounded-2xl tech-icon">
+                        <span class="text-4xl mb-2">🧩</span>
+                        <span class="font-semibold text-[#005F73]">Microservices</span>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium text-[#005F73]">Java & Quarkus</span>
+                            <span class="text-sm font-medium text-[#005F73]">95%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-value" style="width: 0%" data-width="95%"></div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium text-[#005F73]">Node.js & Express</span>
+                            <span class="text-sm font-medium text-[#005F73]">85%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-value" style="width: 0%" data-width="85%"></div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium text-[#005F73]">Database Management</span>
+                            <span class="text-sm font-medium text-[#005F73]">80%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-value" style="width: 0%" data-width="80%"></div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium text-[#005F73]">DevOps & Automation</span>
+                            <span class="text-sm font-medium text-[#005F73]">75%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-value" style="width: 0%" data-width="75%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-2xl shadow-xl p-6 skill-card" data-aos="fade-right" data-aos-duration="800">
+                    <h3 class="text-2xl font-bold text-center text-[#005F73] mb-4">Frameworks & Libraries</h3>
+                    <p class="text-center text-gray-600 mb-6">This chart shows the breadth of experience with modern frameworks and libraries, highlighting strong capabilities in building robust, enterprise-grade applications with Quarkus and Spring.</p>
+                    <div class="chart-container h-80">
+                         <canvas id="frameworksChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl shadow-xl p-6 skill-card" data-aos="fade-left" data-aos-duration="800">
+                    <h3 class="text-2xl font-bold text-center text-[#005F73] mb-4">Languages</h3>
+                    <p class="text-center text-gray-600 mb-6">Expertise across multiple programming languages demonstrates the flexibility to adapt to different project requirements, with deep skills in Java, Kotlin, and JavaScript for backend, frontend, and microservice development.</p>
+                    <div class="chart-container h-80">
+                        <canvas id="languagesChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="git-contributions" class="mb-16 bg-white rounded-2xl shadow-xl p-6" data-aos="fade-up" data-aos-duration="1000">
+            <h2 class="text-3xl font-bold text-center text-[#005F73] mb-8">GitHub Contributions</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold text-[#005F73] mb-4">Repository Activity</h3>
+                    <p class="text-gray-600 mb-4">Tracking progress and contributions across Git repositories helps visualize development activity and productivity over time :cite[3]:cite[7].</p>
+                    <div class="bg-[#EEF4ED] p-4 rounded-xl">
+                        <div class="flex justify-between mb-2">
+                            <span>chandan-fosteringlinux</span>
+                            <span class="font-semibold text-[#0A9396]">78%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-value" style="width: 0%" data-width="78%"></div>
+                        </div>
+                    </div>
+                    <div class="bg-[#EEF4ED] p-4 rounded-xl mt-4">
+                        <div class="flex justify-between mb-2">
+                            <span>chandan-singh101</span>
+                            <span class="font-semibold text-[#0A9396]">92%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-value" style="width: 0%" data-width="92%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-[#005F73] mb-4">Commit History</h3>
+                    <p class="text-gray-600 mb-4">Visualizing commit activity provides insights into development patterns and productivity trends :cite[3]:cite[10].</p>
+                    <div class="chart-container h-60">
+                        <canvas id="gitHistoryChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="mt-16 py-8 text-center text-[#0A9396]">
+            <p>© 2023 Chandan Singh | Software Developer Portfolio | Keenable Computers Pvt. Ltd.</p>
+            <p class="mt-2">Contact: chandansingh9625996512@gmail.com | 9625996512</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 1000,
+                once: true,
+                offset: 100
+            });
+            
+            // Animate progress bars
+            setTimeout(() => {
+                document.querySelectorAll('.progress-value').forEach(bar => {
+                    bar.style.width = bar.getAttribute('data-width');
+                });
+            }, 500);
+            
+            // Animate counter for microservice testing
+            animateValue("microservice-counter", 0, 17, 1500);
+        });
+        
+        // Counter animation function
+        function animateValue(id, start, end, duration) {
+            const obj = document.getElementById(id);
+            if (!obj) return;
+            
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.innerHTML = Math.floor(progress * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+        
+        const tooltipTitleCallback = function(tooltipItems) {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+              return label.join(' ');
+            } else {
+              return label;
+            }
+        };
+        
+        const wrapLabel = (label) => {
+            const max = 16;
+            if (label.length <= max) return label;
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + ' ' + word).length > max) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine += (currentLine ? ' ' : '') + word;
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        };
+
+        const colors = {
+            primaryBlue: '#005F73',
+            accentTeal: '#0A9396',
+            highlightGreen: '#94D2BD',
+            secondaryAccent: '#E9D8A6',
+            darkText: '#001219'
+        };
+
+        const skillsRadarCtx = document.getElementById('skillsRadarChart').getContext('2d');
+        new Chart(skillsRadarCtx, {
+            type: 'radar',
+            data: {
+                labels: ['Backend Dev', 'Frontend Dev', 'Microservices', 'DevOps', 'QA & Testing', 'Databases'],
+                datasets: [{
+                    label: 'Proficiency Level',
+                    data: [90, 75, 85, 70, 95, 80],
+                    backgroundColor: 'rgba(10, 147, 150, 0.2)',
+                    borderColor: colors.accentTeal,
+                    pointBackgroundColor: colors.accentTeal,
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: colors.accentTeal,
+                    animation: {
+                        duration: 2000,
+                        easing: 'easeOutQuart'
+                    }
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                },
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(0, 0, 0, 0.1)' },
+                        grid: { color: 'rgba(0, 0, 0, 0.1)' },
+                        pointLabels: { font: { size: 14, weight: 'bold' }, color: colors.darkText },
+                        ticks: { backdropColor: 'transparent', display: false }
+                    }
+                },
+                animation: {
+                    duration: 2000,
+                    easing: 'easeOutQuart'
+                }
+            }
+        });
+
+        const mockServicesCtx = document.getElementById('mockServicesChart').getContext('2d');
+        new Chart(mockServicesCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Manual Creation', 'Automated Generation'],
+                datasets: [{
+                    label: 'Mockoon',
+                    data: [70, 0],
+                    backgroundColor: colors.primaryBlue,
+                }, {
+                    label: 'WireMock',
+                    data: [0, 100],
+                    backgroundColor: colors.accentTeal,
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                maintainAspectRatio: false,
+                scales: {
+                    x: { stacked: true, grid: { display: false } },
+                    y: { stacked: true, grid: { display: false } }
+                },
+                plugins: {
+                    legend: { position: 'top' },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                },
+                animation: {
+                    duration: 2000,
+                    easing: 'easeOutBounce'
+                }
+            }
+        });
+
+        const frameworksCtx = document.getElementById('frameworksChart').getContext('2d');
+        const frameworkLabels = ['Quarkus / Camel-Quarkus', 'Spring Security', 'Express.js / Node.js', 'Java Swing', 'Kafka'];
+        new Chart(frameworksCtx, {
+            type: 'bar',
+            data: {
+                labels: frameworkLabels.map(wrapLabel),
+                datasets: [{
+                    label: 'Experience Level',
+                    data: [95, 80, 85, 70, 75],
+                    backgroundColor: [colors.primaryBlue, colors.accentTeal, colors.highlightGreen, colors.secondaryAccent, '#AEB4A9'],
+                    borderColor: '#fff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                },
+                scales: {
+                    x: { grid: { display: false } },
+                    y: { grid: { display: false } }
+                },
+                animation: {
+                    duration: 2000,
+                    easing: 'easeOutQuart'
+                }
+            }
+        });
+        
+        const languagesCtx = document.getElementById('languagesChart').getContext('2d');
+        new Chart(languagesCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Java', 'Kotlin', 'JavaScript', 'SQL', 'Shell Scripting'],
+                datasets: [{
+                    data: [35, 25, 20, 15, 5],
+                    backgroundColor: [colors.primaryBlue, colors.accentTeal, colors.highlightGreen, colors.secondaryAccent, '#AEB4A9'],
+                    hoverOffset: 4,
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'right' },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                },
+                animation: {
+                    duration: 2000,
+                    easing: 'easeOutQuart'
+                }
+            }
+        });
+        
+        const gitHistoryCtx = document.getElementById('gitHistoryChart').getContext('2d');
+        new Chart(gitHistoryCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+                datasets: [{
+                    label: 'Monthly Commits',
+                    data: [32, 45, 28, 51, 42, 39, 56, 47, 43],
+                    backgroundColor: 'rgba(10, 147, 150, 0.2)',
+                    borderColor: colors.accentTeal,
+                    tension: 0.3,
+                    fill: true
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { display: true, color: 'rgba(0, 0, 0, 0.1)' }
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                },
+                plugins: {
+                    legend: { position: 'top' }
+                },
+                animation: {
+                    duration: 2000,
+                    easing: 'easeOutQuart'
+                }
+            }
+        });
+    </script>
+</body>
+</html>
